@@ -20,7 +20,9 @@ my $number_of_shows = 1;
 
 my @URLS;
 for ( my $i = 0; $i < $number_of_shows; $i++ ) {
-    push @URLS, $xml->{ channel }->{ item }[$i]->{ enclosure }->{ url };
+	my $title	= $xml->{ channel }->{ item }[$i]->{ enclosure }->{ title };
+    my $url		= $xml->{ channel }->{ item }[$i]->{ enclosure }->{ url };
+    push @URLS, $url;
 }    
 
 #print Dumper $xml;
