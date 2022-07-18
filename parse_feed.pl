@@ -16,9 +16,13 @@ $|++;
 
 my $in	= $ARGV[0];
 my $xml	= XMLin( $in );
+my $number_of_shows = 1;
 
-my $url	= $xml->{ channel }->{ item }[0]->{ enclosure }->{ url }; 
+my @URLS;
+for ( my $i = 0; $i < $number_of_shows; $i++ ) {
+    push @URLS, $xml->{ channel }->{ item }[$i]->{ enclosure }->{ url };
+}    
 
 #print Dumper $xml;
-print $url;
+print $URLS[0];
 
